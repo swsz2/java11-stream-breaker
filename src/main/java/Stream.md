@@ -1,6 +1,6 @@
 # java.util.stream.Stream
 
-
+## 영문
 ```
     A sequence of elements supporting sequential and parallel aggregate operations.
     The following example illustrates an aggregate operation using Stream and IntStream:
@@ -11,33 +11,35 @@
                      .sum();
 
     In this example, widgets is a Collection<Widget>.
-    We create a stream of Widget objects via Collection.stream(), filter it to produce a stream containing only the red widgets, and then transform it into a stream of int values representing the weight of each red widget.
+    We create a stream of Widget objects via Collection.stream(), filter it to produce a stream containing only the red widgets,
+    and then transform it into a stream of int values representing the weight of each red widget.
     Then this stream is summed to produce a total weight.
 
+```
+## 번역
+> 순차, 병렬 집계 연산/작업을 지원하는 요소의 연속이다. <br>
+> 아래 예시는 Stream과 IntStream을 사용한 집계 작업이다. <br>
 
-    
-    순차, 병렬 집계 연산/작업을 지원하는 요소의 연속이다.
-    아래 예시는 Stream과 IntStream을 사용한 집계 작업이다.
-
-    int sum = widgets.stream()                          // 위젯 컬렉션에 대한 스트림을 생성
-                     .filter(w -> w.getColor() == RED)  // 위젯의 색이 빨간 색인 요소만 추출
-                     .mapToInt(w -> w.getWeight())      // 추출된 위젯의 무게를 IntStream으로 변환
-                     .sum();                            // 스트림 내 요소들의 합을 계산
-
-    이 예시에서 widgets은 Widget에 대한 컬렉션이다.
-    우리는 Collection.stream을 통해 Widget objects에 대한 스트림을 만들고 빨간색 위젯만 포함하는 스트림을 생성하도록 필터링했다.
-    그리고 각 빨간색 위젯의 무게? 가중치?를 나타내는 IntStream으로 변환했다. 그런 다음 이 스트림의 합을 계산해 전체 무게? 가중치?을 생성했다.
+```java
+        int sum = widgets.stream()                  // 위젯 컬렉션에 대한 스트림을 생성
+                .filter(w -> w.getColor() == RED)   // 위젯의 색이 빨간 색인 요소만 추출
+                .mapToInt(w -> w.getWeight())       // 추출된 위젯의 무게를 IntStream으로 변환
+                .sum();                             // 스트림 내 요소들의 합을 계산        
 ```
 
+> 이 예시에서 widgets은 Widget에 대한 컬렉션이다. <br>
+> 우리는 Collection.stream을 통해 Widget objects에 대한 스트림을 만들고 빨간색 위젯만 포함하는 스트림을 생성하도록 필터링했다. <br>
+> 그리고 각 빨간색 위젯의 무게? 가중치?를 나타내는 IntStream으로 변환했다. 그런 다음 이 스트림의 합을 계산해 전체 무게? 가중치?을 생성했다. <br>
+---
+
+## 영문
 ```
    In addition to Stream, which is a stream of object references,
    there are primitive specializations for IntStream, LongStream, and DoubleStream, all of which are referred to as "streams" and conform to the characteristics and restrictions described here.
-
-
-
-   객체 참조의 Stream 외에 primitive 타입에 특화된 IntStream, LongStream 및 DoubleStream가 있으며 모두 "Stream"이라고 하며 여기(아래)에 설명되는 특성 및 제한을 따른다.
 ```
-
+## 번역
+> 객체 참조의 Stream 외에 primitive 타입에 특화된 IntStream, LongStream 및 DoubleStream가 있으며 모두 "Stream"이라고 하며 여기(아래)에 설명되는 특성 및 제한을 따른다.
+---
 
 ```
 To perform a computation, stream operations are composed into a stream pipeline. A stream pipeline consists of a source (which might be an array, a collection, a generator function, an I/O channel, etc), zero or more intermediate operations (which transform a stream into another stream, such as filter(Predicate)), and a terminal operation (which produces a result or side-effect, such as count() or forEach(Consumer)). Streams are lazy; computation on the source data is only performed when the terminal operation is initiated, and source elements are consumed only as needed.
